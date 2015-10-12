@@ -1,0 +1,94 @@
+P  {
+	font-size : small;
+	font-family : Verdana;
+	color : Lime;
+}
+
+H1  {
+	font-family : Arial;
+	font-weight : bold;
+	color : White;
+}
+
+H2  {}
+
+H3  {}
+A.t-strip  {
+	color : blue;
+	font-family:sans-serif;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+td.t-strip{
+	color: red;
+	font-weight:bold;
+	background-color:yellow;
+}
+A  {
+	color : White;
+}
+
+A:Visited  {}
+
+A:Active  {
+	color : Yellow;
+}
+
+A:Hover  {
+	color : Yellow;
+}
+
+BODY  {
+	background : yellow;
+	background-color : Red;
+	color : Yellow;
+}
+
+td.caption  {
+	background-color : Black;
+	color : Yellow;
+	font-family : Arial;
+	font-weight : bold;
+}
+
+td.ask  {
+	color : Black;
+	background-color : #ff9900;
+}
+
+td.sidebar-todays-hits-text  {
+	font-size : medium;
+	font-family : cursive;
+	color : Yellow;
+	background-color : Blue;
+	font-weight : normal;
+}
+
+td.sidebar-todays-hits-digit  {
+	font-size : medium;
+	background-color : Black;
+	color : White;
+	font-weight : bold;
+}
+
+td.webstats-digit  {
+	font-family : monospace;
+	color : Yellow;
+	background-color : Black;
+}
+
+input  {
+	color : Red;
+	list-style : circle;
+	background-color : #fdd7e4;
+}
+
+input.on-ask  {
+	background-color : #ff9900;
+}
+
+td.submit-bg  {
+	background-color : Blue;
+}
+

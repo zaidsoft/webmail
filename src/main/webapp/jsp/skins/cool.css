@@ -1,0 +1,97 @@
+P  {
+	font-size : small;
+	font-family : Verdana;
+	color : Lime;
+}
+
+H1  {
+	font-family : Arial;
+	font-weight : bold;
+	color : Aqua;
+}
+
+H2  {}
+
+H3  {}
+
+A  {
+	color : Yellow;
+}
+
+A:Visited  {}
+
+A:Active  {
+	color : Fuchsia;
+}
+
+A:Hover  {
+	color : Red;
+}
+
+BODY  {
+	background-color : #339900;
+	color : Lime;
+}
+
+td.caption  {
+	background-color : Maroon;
+	color : White;
+	font-family : Arial;
+	font-weight : bold;
+}
+
+td.ask  {
+	color : Maroon;
+	background-color : #cccc00;
+	padding-left : 5px;
+}
+
+td.sidebar-todays-hits-text  {
+	font-size : medium;
+	font-family : monospace;
+	color : Black;
+	background-color : Silver;
+	font-weight : normal;
+}
+
+td.sidebar-todays-hits-digit  {
+	font-size : medium;
+	background-color : Black;
+	color : Lime;
+	font-weight : bold;
+}
+
+input  {
+	color : Black;
+	list-style : circle;
+	background-color : #e0eefe;
+}
+
+td.submit-bg  {
+	background-color : #33cc66;
+}
+
+a.on-ask  {
+	color : Blue;
+}
+
+input.on-ask  {
+	background-color : #cccc00;
+}
+
+div.message  {
+	font-weight : bold;
+	color : Yellow;
+	text-align : center;
+	font-family : Arial;
+	font-size : medium;
+}
+
+td.webstats-digit  {
+	font-family : monospace;
+	color : Lime;
+	background-color : Black;
+}
+
+table.webstats  {}
+

@@ -1,0 +1,25 @@
+     span.white-normal  {
+      	font-size : x-small;
+      	font-family : arial, Verdana, helvertica;
+      	font-weight : bold;
+      	font-style : normal;
+      	color : white;
+      	text-align : center;
+     }	
+     span.red-normal  {
+      	font-size : x-small;
+      	font-family : arial, Verdana, helvertica;
+      	font-weight : bold;
+      	font-style : normal;
+      	color : red;
+      	text-align : center;
+     }	
+	 
+     span.white-big  {
+      	font-size : normal;
+      	font-family : arial, Verdana, helvertica;
+      	font-weight : bold;
+      	font-style : normal;
+      	color : #33ffff;
+      	text-align : center;
+     }		 
