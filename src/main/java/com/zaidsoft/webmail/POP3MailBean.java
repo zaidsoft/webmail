@@ -38,7 +38,7 @@ import javax.mail.search.MessageIDTerm;
  */
 public class POP3MailBean implements java.io.Serializable, JspTreeInfo {
 
-    public boolean DEBUG = false;
+    public boolean DEBUG = true;
 
     // POP3 Accound (Server) details
     private String mailServer;
@@ -153,17 +153,20 @@ public class POP3MailBean implements java.io.Serializable, JspTreeInfo {
     // connects to POP3 Server to
     // download Mail 
     private void init() throws NoSuchProviderException, MessagingException {
-        String provider = "imap";
+        String provider = null;
         Properties props = new Properties();
+        props.setProperty("mail.store.protocol", "imaps");
         Session session = null;
 
-        // Connect to the POP3 server
         if (PropertiesHelper.getBooleanProperty("useLocalStore")) {
+            // In csae POP3 is to be used as per configuration (unusual)
             if (storeLocation != null) {
                 props.put("jp.gr.java_conf.roadster.net.pop.rootDirectory", storeLocation);
             }
             session = Session.getInstance(props);
-        } else {
+        } else { 
+            // Use IMAP 
+            provider = "imaps"; // we need it instead of imap for ssl to work
             session = Session.getDefaultInstance(props, null);
         }
 
@@ -175,9 +178,10 @@ public class POP3MailBean implements java.io.Serializable, JspTreeInfo {
         seperator = defaultFolder.getSeparator();
         setFolder("INBOX");
 
-        Message[] messages = folder.getMessages();
+        boolean dumpMsg = false;
         // For debug Only
-        if (DEBUG) {
+        if (DEBUG && dumpMsg) {
+            Message[] messages = folder.getMessages();
             for (int i = 0; i < messages.length; i++) {
                 System.out.println("------------ Message " + (i + 1)
                         + " ------------");

@@ -55,7 +55,8 @@ function checkDel(target){
 <form name="performer" method="post">
 <% 
  int count = b.getMessageCount();
- for (int i=count; i > 0; i--){ 
+ int rows = count > 20 ? 20 : count;
+ for (int i = count; i > (count - rows); i--){ 
     //javax.mail.internet.MimeMessage msg = b.getMessage(i);
     MimeMessageHandler m = new MimeMessageHandler(b.getMessage(i));
 %>

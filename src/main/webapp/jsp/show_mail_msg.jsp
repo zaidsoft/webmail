@@ -70,7 +70,7 @@ function checkDel(target){
                     String fileName="";
                     int count = msgHandler.getAttachmentCount();
                     for ( int i=0; i < count; i++){
-                        Part attach = msgHandler.getAttachment(i);
+                        javax.mail.Part attach = msgHandler.getAttachment(i);
                         fileName = attach.getFileName();
                         if ( fileName == null ) fileName="Unkonwn";
                         %>

@@ -58,9 +58,12 @@ public class WebMailAuthenticator {
             }
             id = email.substring(0, k);
             host = email.substring(k + 1);
-
-            users[0] = id + "." + host;
-            users[1] = email;
+            if (host.equals("gmail.com")){
+                host = "imap.gmail.com";
+            }
+            
+            users[0] = email;
+            users[1] = id + "." + host;
             users[2] = id + "-" + host;
             users[3] = id;
         }
