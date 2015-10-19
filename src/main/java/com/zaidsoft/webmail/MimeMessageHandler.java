@@ -50,7 +50,7 @@ public class MimeMessageHandler extends java.lang.Object {
     String msgID = "0";
     // this url provides the attachement
     // when called from a web browser
-    String attachProviderURL = "../../servlet/com.zaidsoft.webmail.AttachmentProviderServlet";
+    String attachProviderURL = "../../webmail/attachview";
 
     String browserHTML = "";
     String replyText = null;

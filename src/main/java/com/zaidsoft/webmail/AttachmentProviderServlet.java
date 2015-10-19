@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import javax.mail.MessagingException;
 import javax.mail.internet.ContentType;
-import javax.servlet.ServletConfig;
+import javax.servlet.ServletConfig; 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

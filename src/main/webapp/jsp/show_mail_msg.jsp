@@ -75,7 +75,7 @@ function checkDel(target){
                         if ( fileName == null ) fileName="Unkonwn";
                         %>
                         &nbsp;&raquo;&nbsp;
-                        <a href="../../servlet/com.zaidsoft.webmail.AttachmentProviderServlet?msgID=<%=msgID%>&partIndex=<%=i%>"><%=fileName%></a>
+                        <a href="../../webmail/attachview?msgID=<%=msgID%>&partIndex=<%=i%>"><%=fileName%></a>
                         (<%= (attach.getSize()/1024)%>k)<br>
                     <% } 
                 }
@@ -103,7 +103,10 @@ function checkDel(target){
 </tr>
 <tr>
     <td colspan="3" class="ask">
-        <%=msgHandler.getBrowserHTML()%>
+        <iframe src="render.jsp?msgID=<%=msgID%>" width="600px" height="1000" frameborder="0"> 
+            <%---=msgHandler.getBrowserHTML()--%>
+            Your browser doesn't support iframe! Please upgrade your browser and retry.
+        </iframe>
     </td>
 </tr>
 </table><% System.out.println(System.currentTimeMillis() - st ); %>
