@@ -13,13 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.zaidsoft.webmail;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import java.util.Hashtable;
+import javax.naming.*;
+import javax.naming.directory.*;
 
 /**
  * Responsible for authenticating the user.
@@ -58,10 +61,14 @@ public class WebMailAuthenticator {
             }
             id = email.substring(0, k);
             host = email.substring(k + 1);
-            if (host.equals("gmail.com")){
+            String mx = lookupDNS(host, "MX");
+            if (host.equals("gmail.com") || mx.contains("google")) {
                 host = "imap.gmail.com";
             }
-            
+            else {
+                 host = mx;
+            }
+
             users[0] = email;
             users[1] = id + "." + host;
             users[2] = id + "-" + host;
@@ -95,4 +102,19 @@ public class WebMailAuthenticator {
         throw new Exception(errMsg);
     }
 
+    private static String lookupDNS(String name, String recType) throws NamingException {
+        Hashtable environment = new Hashtable();
+        environment.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
+        DirContext dnsCtx = new InitialDirContext(environment);
+        Attributes attribs = dnsCtx.getAttributes(name, new String[]{recType});
+        Attribute a = attribs.get(recType);
+        if (a == null) {
+            return null;
+        }
+        // return the first record
+        String s = a.get(0).toString();
+        return s.split(" ")[1].trim();
+    }
+     
+    
 }
