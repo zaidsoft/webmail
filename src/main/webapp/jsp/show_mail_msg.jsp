@@ -103,7 +103,7 @@ function checkDel(target){
 </tr>
 <tr>
     <td colspan="3" class="ask">
-        <iframe src="render.jsp?msgID=<%=msgID%>" width="600px" height="1000" frameborder="0"> 
+        <iframe src="render.jsp?msgID=<%=msgID%>" width="600px" height="1000" frameborder="0" sandbox> 
             <%---=msgHandler.getBrowserHTML()--%>
             Your browser doesn't support iframe! Please upgrade your browser and retry.
         </iframe>
