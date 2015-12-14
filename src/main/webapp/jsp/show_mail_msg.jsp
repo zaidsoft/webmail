@@ -4,25 +4,7 @@
 <%@ page import="javax.activation.*" %>
 <%@page import="com.zaidsoft.webmail.*" %>
 <%@ include file="checkLogin.jsp"%>
-<html>
-<head><title>Message</title>
-<script>
-<!--
-function checkDel(target){
-    if ( confirm("Are you sure, you want to DELETE this message?" ) ){
-        document.location.href = target;
-        return true;
-    }
-    return false;
-}
-// -->
-</script>
-<link rel=stylesheet type="text/css" href="skins/normal-default.css">
-</head>
 <jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.POP3MailBean" />
-<body>
-<%----------- Include the Header --------------%>
-<jsp:include page="header.jsp?depth=../" flush="true"/> 
 <%  long st = System.currentTimeMillis();
     String folder = request.getParameter("folder");
 
@@ -48,6 +30,26 @@ function checkDel(target){
         session.setAttribute("msgHandler"+msgID, msgHandler);
     }
 %>
+<html>
+<head><title><%=msgHandler.getSubject()%></title>
+<script>
+<!--
+function checkDel(target){
+    if ( confirm("Are you sure, you want to DELETE this message?" ) ){
+        document.location.href = target;
+        return true;
+    }
+    return false;
+}
+// -->
+</script>
+<link rel=stylesheet type="text/css" href="skins/normal-default.css">
+</head>
+
+<body>
+<%----------- Include the Header --------------%>
+<jsp:include page="header.jsp?depth=../" flush="true"/> 
+
 <jsp:include page="left_side_bar.jsp" flush="true"/>
 <br>
 <table width="80%" height="50%" cellspacing="1" cellpadding="1" border="0">
