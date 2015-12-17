@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.zaidsoft.webmail.POP3MailBean.ListRow"%>
 <%@page contentType="text/html"%>
 <%@page import="com.zaidsoft.webmail.*" %>
 <%@page import="javax.mail.internet.*" %>
@@ -53,21 +55,25 @@ function checkDel(target){
     <td align="center" class="caption"> Size </td>
 </tr>
 <form name="performer" method="post">
-<% 
- int count = b.getMessageCount();
- int rows = count > 20 ? 20 : count;
+<%
+ List<ListRow> mrows = b.buildPageSummary();
+ int count = mrows.size() -1;
+ int max = 20;
+ int rows = count < max ? count : max;
+ 
  for (int i = count; i > (count - rows); i--){ 
     //javax.mail.internet.MimeMessage msg = b.getMessage(i);
-    MimeMessageHandler m = new MimeMessageHandler(b.getMessage(i));
+    System.out.print("RENDERING          " + i);
+    ListRow m = mrows.get(i);
 %>
 <tr bgcolor="#ffffcc">
     <td class="ask"><INPUT class = "on-ask" name="<%=i%>" type="checkbox"></td>
-    <td class="ask">&nbsp;<%=m.containsAttachment() ? "A" : ""%>&nbsp;</td>
-    <td class="ask">&nbsp;<%=m.getFromAddress()%>&nbsp;</td>
+    <td class="ask">&nbsp;<%= m.isAttachment() ? "A" : ""%>&nbsp;</td>
+    <td class="ask">&nbsp;<%=m.getFrom()%>&nbsp;</td>
     <td class="ask"><a href="show_mail_msg.jsp?folder=<%=folder%>&msgID=<%=m.getMessageID()%>">
         &nbsp;<%=m.getSubject()%>&nbsp;</a>
     </td>
-    <td class="ask"><%=m.getSentDateShort()%></td>
+    <td class="ask"><%=m.getDate() %></td>
     <td class="ask" align="right"><%=m.getSizeK()%>k&nbsp;</td>
 </tr>
 <% } %>

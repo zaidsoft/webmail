@@ -18,9 +18,13 @@
  */
 package com.zaidsoft.webmail;
 
-
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Properties;
+import javax.mail.Address;
+import javax.mail.FetchProfile;
 import javax.mail.Flags;
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -164,7 +168,7 @@ public class POP3MailBean implements java.io.Serializable, JspTreeInfo {
                 props.put("jp.gr.java_conf.roadster.net.pop.rootDirectory", storeLocation);
             }
             session = Session.getInstance(props);
-        } else { 
+        } else {
             // Use IMAP 
             provider = "imaps"; // we need it instead of imap for ssl to work
             session = Session.getDefaultInstance(props, null);
@@ -198,6 +202,137 @@ public class POP3MailBean implements java.io.Serializable, JspTreeInfo {
         //but don't remove the messages from the server
         //inbox.close(false);
         //store.close();
+    }
+
+    private void buildSentContacts() throws MessagingException {
+        List<String> contacts = new ArrayList<String>();
+        folder = defaultFolder.getFolder("Sent");
+        if (!folder.exists()) {
+            folder = defaultFolder.getFolder("Sent Mail");
+        }
+        Message[] messages = folder.getMessages();
+        FetchProfile fp = new FetchProfile();
+        fp.add(FetchProfile.Item.ENVELOPE);
+        fp.add("To");
+        folder.fetch(messages, fp);
+        for (Message m : messages) {
+            Address[] as = m.getRecipients(Message.RecipientType.TO);
+            for (Address a : as) {
+                String s = a.toString().intern();
+                if (!contacts.contains(s)) {
+                    contacts.add(s);
+                }
+            }
+            as = m.getRecipients(Message.RecipientType.CC);
+            for (Address a : as) {
+                String s = a.toString().intern();
+                if (!contacts.contains(s)) {
+                    contacts.add(s);
+                }
+            }
+            as = m.getRecipients(Message.RecipientType.BCC);
+            for (Address a : as) {
+                String s = a.toString().intern();
+                if (!contacts.contains(s)) {
+                    contacts.add(s);
+                }
+            }
+        }
+    }
+
+    public List<ListRow> buildPageSummary() throws MessagingException {
+        List<ListRow> rows = new ArrayList<ListRow>();
+        Message[] messages = folder.getMessages();
+        FetchProfile fp = new FetchProfile();
+        fp.add(FetchProfile.Item.ENVELOPE);
+        fp.add("Subject");
+        fp.add("From");
+        fp.add("To");
+        fp.add("Date");
+        folder.fetch(messages, fp);
+        for (Message m : messages) {
+            ListRow row = new ListRow();
+            row.date = m.getReceivedDate();
+            row.from = m.getFrom()[0].toString();
+            Address[] a = m.getRecipients(Message.RecipientType.TO);
+            if (a != null){
+                row.to = a[0].toString();
+            }
+            row.subject = m.getSubject();
+            row.messageID = ((javax.mail.internet.MimeMessage) m).getMessageID();
+            row.size = m.getSize();
+            rows.add(row);
+        }
+        return rows;
+    }
+
+    public class ListRow {
+
+        String messageID;
+        String subject;
+        String from;
+        String to;
+        boolean attachment;
+        Date date;
+        long size;
+
+        public String getSizeK() throws MessagingException {
+            if (size == -1) {
+                return "0";
+            }
+            return String.valueOf(size / 1024);
+        }
+
+        public String getSubject() {
+            return subject;
+        }
+
+        public void setSubject(String subject) {
+            this.subject = subject;
+        }
+
+        public String getFrom() {
+            return from;
+        }
+
+        public void setFrom(String from) {
+            this.from = from;
+        }
+
+        public String getTo() {
+            return to;
+        }
+
+        public void setTo(String to) {
+            this.to = to;
+        }
+
+        public boolean isAttachment() {
+            return attachment;
+        }
+
+        public void setAttachment(boolean attachment) {
+            this.attachment = attachment;
+        }
+
+        public Date getDate() {
+            return date;
+        }
+
+        public void setDate(Date date) {
+            this.date = date; 
+        }
+
+        public String getMessageID() {
+            return messageID;
+        }
+
+        public void setMessageID(String messageID) {
+            this.messageID = messageID;
+        }
+        
+        
+
     }
 
     /**
