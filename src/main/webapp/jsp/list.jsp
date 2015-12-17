@@ -4,8 +4,23 @@
 <%@page import="com.zaidsoft.webmail.*" %>
 <%@page import="javax.mail.internet.*" %>
 <%@ include file="checkLogin.jsp"%>
+
+<jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.POP3MailBean" />
+<% 
+    String folder = request.getParameter("folder");
+    if ( folder != null )
+    b.setFolder(folder);
+    else folder = b.getFolderName();
+    b.refresh();
+    session.setAttribute("jspTreeImpl", b);
+    
+    
+ String s = request.getParameter("page");
+ if (s == null) s = "1";
+ int p = Integer.parseInt(s);    
+%>
 <html>
-<head><title>List of Mails</title>
+<head><title>Page <%= p %> List of Mails </title>
 <script>
 <!--
 function checkDel(target){
@@ -19,19 +34,12 @@ function checkDel(target){
 </script>
 <link rel=stylesheet type="text/css" href="skins/normal-default.css">
 </head>
-<jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.POP3MailBean" />
+
 <body>
-<% 
-    String folder = request.getParameter("folder");
-    if ( folder != null )
-    b.setFolder(folder);
-    else folder = b.getFolderName();
-    b.refresh();
-    session.setAttribute("jspTreeImpl", b);
-%>
+
 <%----------- Include the Header --------------%>
 <jsp:include page="header.jsp?depth=../" flush="true"/> 
-<jsp:include page="left_side_bar.jsp" flush="true"/>
+<jsp:include page="sidebar.jsp" flush="true"/>
 <br>
 <table cellspacing="2" cellpadding="0" border="0" rules="rows" width='92%'>
 <tr>
@@ -42,6 +50,9 @@ function checkDel(target){
 		<button class="mail-link" onClick="document.location.href='compose.jsp'">Compose</button>
                 <!--button class="mail-link" onClick="document.performer.action = 'perform.jsp?act=view'; document.performer.submit()">View Selected</button-->
                 <button class="mail-link" onClick="document.performer.action = 'perform.jsp?act=del';  checkDel()">Delete Selected</button>
+                <button <%= ( p <= 1 ) ? "disabled=\"true\"" : "" %> class="mail-link" onClick="document.location.href='list.jsp?folder=<%=folder%>&page=<%=p-1%>'">Prev</button>
+                <button <%= ( p == b.getMessageCount()) ? "disabled=\"true\"" : "" %> class="mail-link" onClick="document.location.href='list.jsp?folder=<%=folder%>&page=<%=p+1%>'">Next</button>
+                
                 <br><br><br>
         </td>
 </tr>
@@ -56,24 +67,19 @@ function checkDel(target){
 </tr>
 <form name="performer" method="post">
 <%
- List<ListRow> mrows = b.buildPageSummary();
- int count = mrows.size() -1;
- int max = 20;
- int rows = count < max ? count : max;
- 
- for (int i = count; i > (count - rows); i--){ 
-    //javax.mail.internet.MimeMessage msg = b.getMessage(i);
-    System.out.print("RENDERING          " + i);
+
+ List<ListRow> mrows = b.buildPageSummary(p);
+ for (int i = 0; i < mrows.size(); i++){ 
     ListRow m = mrows.get(i);
 %>
 <tr bgcolor="#ffffcc">
     <td class="ask"><INPUT class = "on-ask" name="<%=i%>" type="checkbox"></td>
     <td class="ask">&nbsp;<%= m.isAttachment() ? "A" : ""%>&nbsp;</td>
     <td class="ask">&nbsp;<%=m.getFrom()%>&nbsp;</td>
-    <td class="ask"><a href="show_mail_msg.jsp?folder=<%=folder%>&msgID=<%=m.getMessageID()%>">
+    <td class="ask"><a href="show.jsp?folder=<%=folder%>&msgID=<%=m.getMessageID()%>">
         &nbsp;<%=m.getSubject()%>&nbsp;</a>
     </td>
-    <td class="ask"><%=m.getDate() %></td>
+    <td class="ask"><%=m.getDate() %></td> 
     <td class="ask" align="right"><%=m.getSizeK()%>k&nbsp;</td>
 </tr>
 <% } %>

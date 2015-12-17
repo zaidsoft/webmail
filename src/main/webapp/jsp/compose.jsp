@@ -54,7 +54,7 @@ function checkEmpty(){
                        m.getReplyText();
     }
 %>
-<jsp:include page="left_side_bar.jsp" flush="true"/>
+<jsp:include page="sidebar.jsp" flush="true"/>
 <BR>
 <form name="compose" action="perform.jsp?act=send" enctype="multipart/form-data" method="post" onSubmit="return checkEmpty();">
 <table cellspacing="1" cellpadding="1" border="1" rules="rows" frame="below">

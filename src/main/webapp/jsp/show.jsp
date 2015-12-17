@@ -23,7 +23,7 @@
     }
 
     int index = msg.getMessageNumber();
-    msgID = msg.getMessageID();
+    msgID = b.getMessageID(msg);
     MimeMessageHandler msgHandler = (MimeMessageHandler) session.getAttribute("msgHandler" + msgID);
     if ( msgHandler == null ) {
         msgHandler = new MimeMessageHandler((MimeMessage)msg); 
@@ -50,7 +50,7 @@ function checkDel(target){
 <%----------- Include the Header --------------%>
 <jsp:include page="header.jsp?depth=../" flush="true"/> 
 
-<jsp:include page="left_side_bar.jsp" flush="true"/>
+<jsp:include page="sidebar.jsp" flush="true"/>
 <br>
 <table width="80%" height="50%" cellspacing="1" cellpadding="1" border="0">
 <tr>

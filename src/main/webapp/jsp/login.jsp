@@ -15,7 +15,7 @@
     if (submit != null ) {
         try{
           WebMailAuthenticator.authenticate(request, response);
-          response.sendRedirect("view_mail_list.jsp");
+          response.sendRedirect("list.jsp");
           return;
        }
        catch (Exception e){ 

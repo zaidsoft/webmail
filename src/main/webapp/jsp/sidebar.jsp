@@ -8,7 +8,7 @@
 </tr>
 <tr>
     <td align="left" class="ask">  
-    <jsp:include page="../jsp_tree.jsp?handler=view_mail_list.jsp&param=folder" flush="true"/><br>
+    <jsp:include page="../jsp_tree.jsp?handler=list.jsp&param=folder" flush="true"/><br>
     </td>
 </tr>
 <tr>

@@ -32,6 +32,7 @@ import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Store;
+import javax.mail.UIDFolder;
 import javax.mail.internet.MimeMessage;
 import javax.mail.search.MessageIDTerm;
 
@@ -56,6 +57,8 @@ public class POP3MailBean implements java.io.Serializable, JspTreeInfo {
     // the location on local filesystem where 
     // the mails are stored
     String storeLocation = null;
+
+    public static boolean Use_UID_as_MsgID = true;
 
     // this method method should be called just ones and 
     // before all method calls
@@ -125,7 +128,12 @@ public class POP3MailBean implements java.io.Serializable, JspTreeInfo {
     }
 
     public MimeMessage getMessage(String msgID) throws MessagingException {
-        return (MimeMessage) folder.search(new MessageIDTerm(msgID))[0];
+        if (Use_UID_as_MsgID) {
+            long uid = Long.parseLong(msgID);
+            return (MimeMessage) ((UIDFolder) folder).getMessageByUID(uid);
+        } else {
+            return (MimeMessage) folder.search(new MessageIDTerm(msgID))[0];
+        }
     }
 
     public void deleteMessage(int index) throws MessagingException {
@@ -240,9 +248,14 @@ public class POP3MailBean implements java.io.Serializable, JspTreeInfo {
         }
     }
 
-    public List<ListRow> buildPageSummary() throws MessagingException {
+    public List<ListRow> buildPageSummary(int page) throws MessagingException {
+        int count = folder.getMessageCount() - 1;
+        int max = 20;
+        max = count < max ? count : max;
+        int start = count - (page) * max;
+        int end = start + max;
         List<ListRow> rows = new ArrayList<ListRow>();
-        Message[] messages = folder.getMessages();
+        Message[] messages = folder.getMessages(start, end);
         FetchProfile fp = new FetchProfile();
         fp.add(FetchProfile.Item.ENVELOPE);
         fp.add("Subject");
@@ -255,15 +268,27 @@ public class POP3MailBean implements java.io.Serializable, JspTreeInfo {
             row.date = m.getReceivedDate();
             row.from = m.getFrom()[0].toString();
             Address[] a = m.getRecipients(Message.RecipientType.TO);
-            if (a != null){
+            if (a != null) {
                 row.to = a[0].toString();
             }
             row.subject = m.getSubject();
-            row.messageID = ((javax.mail.internet.MimeMessage) m).getMessageID();
+            if (Use_UID_as_MsgID) {
+                row.messageID = String.valueOf(((UIDFolder) folder).getUID(m));
+            } else {
+                row.messageID = ((javax.mail.internet.MimeMessage) m).getMessageID();
+            }
             row.size = m.getSize();
             rows.add(row);
         }
         return rows;
+    }
+
+    public String getMessageID(Message msg) throws MessagingException {
+        if (Use_UID_as_MsgID) {
+            return String.valueOf(((UIDFolder) folder).getUID(msg));
+        } else {
+            return ((javax.mail.internet.MimeMessage) msg).getMessageID();
+        }
     }
 
     public class ListRow {
@@ -320,7 +345,7 @@ public class POP3MailBean implements java.io.Serializable, JspTreeInfo {
         }
 
         public void setDate(Date date) {
-            this.date = date; 
+            this.date = date;
         }
 
         public String getMessageID() {
@@ -330,8 +355,6 @@ public class POP3MailBean implements java.io.Serializable, JspTreeInfo {
         public void setMessageID(String messageID) {
             this.messageID = messageID;
         }
-        
-        
 
     }
 

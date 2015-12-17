@@ -27,10 +27,10 @@
                         parser.getPart("attach"));
         }
         catch ( Exception e ) { 
-            response.sendRedirect("show_error.jsp?msg=" + e.getMessage());
+            response.sendRedirect("error.jsp?msg=" + e.getMessage());
             return;
         }
-        response.sendRedirect("view_mail_list.jsp");
+        response.sendRedirect("list.jsp");
         return;
     }
 
@@ -46,7 +46,7 @@
                 if ( "on".equals(request.getParameter(String.valueOf(i))))
                 k ++;
             }
-            if ( k == 0 ) response.sendRedirect("view_mail_list.jsp");
+            if ( k == 0 ) response.sendRedirect("list.jsp");
             int[] delMsg = new int[k];
             k = 0;
             for ( int i=1; i <= msgCount; i++){
@@ -57,7 +57,7 @@
             }
             b.deleteMessages(delMsg);
         }
-        response.sendRedirect("view_mail_list.jsp");
+        response.sendRedirect("list.jsp");
         return;
     }
 
@@ -65,10 +65,10 @@
         // identify those they have names one two three ....
         for ( int i=1; i <= msgCount; i++){
             if ( "on".equals(request.getParameter(String.valueOf(i)))) {
-                response.sendRedirect("show_message.jsp?msgNo=" + i);
+                response.sendRedirect("show.jsp?msgNo=" + i);
                 return;
             }
-            response.sendRedirect("view_mail_list.jsp");
+            response.sendRedirect("list.jsp");
         }
     }
     
