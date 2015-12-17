@@ -8,7 +8,7 @@
 <head><title>Mail Content</title>
 <link rel=stylesheet type="text/css" href="skins/normal-default.css">
 </head>
-<jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.POP3MailBean" />
+<jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.IMAPBean" />
 <body style="background-color: white">
 <% 
     // if message number is given find the message id 

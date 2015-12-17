@@ -24,7 +24,7 @@ package com.zaidsoft.webmail;
  *
  */
 import com.zaidsoft.net.HtmlDigester;
-import static com.zaidsoft.webmail.POP3MailBean.Use_UID_as_MsgID;
+import static com.zaidsoft.webmail.IMAPBean.Use_UID_as_MsgID;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;

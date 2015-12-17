@@ -4,7 +4,7 @@
 <html>
 <head><title>Performer</title>
 </head>
-<jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.POP3MailBean" />
+<jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.IMAPBean" />
 <jsp:useBean id="s" scope="session" class="com.zaidsoft.webmail.SMTPBean"/>
 <body>
 <% 

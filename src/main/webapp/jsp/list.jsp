@@ -1,11 +1,11 @@
 <%@page import="java.util.List"%>
-<%@page import="com.zaidsoft.webmail.POP3MailBean.ListRow"%>
+<%@page import="com.zaidsoft.webmail.IMAPBean.ListRow"%>
 <%@page contentType="text/html"%>
 <%@page import="com.zaidsoft.webmail.*" %>
 <%@page import="javax.mail.internet.*" %>
 <%@ include file="checkLogin.jsp"%>
 
-<jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.POP3MailBean" />
+<jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.IMAPBean" />
 <% 
     String folder = request.getParameter("folder");
     if ( folder != null )

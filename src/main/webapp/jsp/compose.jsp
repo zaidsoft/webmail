@@ -20,7 +20,7 @@ function checkEmpty(){
 </script>
 <link rel=stylesheet type="text/css" href="skins/normal-default.css">
 </head>
-<jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.POP3MailBean" />
+<jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.IMAPBean" />
 <body>
 <%----------- Include the Header --------------%>
 <jsp:include page="header.jsp?depth=../" flush="true"/> 

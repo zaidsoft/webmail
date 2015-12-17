@@ -41,7 +41,7 @@ import javax.mail.search.MessageIDTerm;
  * @author DevTeam Zaidsoft <info@zaidsoft.com>
  *
  */
-public class POP3MailBean implements java.io.Serializable, JspTreeInfo {
+public class IMAPBean implements java.io.Serializable, JspTreeInfo {
 
     public boolean DEBUG = true;
 

@@ -4,7 +4,7 @@
 <%@ page import="javax.activation.*" %>
 <%@page import="com.zaidsoft.webmail.*" %>
 <%@ include file="checkLogin.jsp"%>
-<jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.POP3MailBean" />
+<jsp:useBean id="b" scope="session" class="com.zaidsoft.webmail.IMAPBean" />
 <%  long st = System.currentTimeMillis();
     String folder = request.getParameter("folder");
 
