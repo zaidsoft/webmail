@@ -69,7 +69,7 @@ function checkDel(target){
 <%
 
  List<ListRow> mrows = b.buildPageSummary(p);
- for (int i = 0; i < mrows.size(); i++){ 
+ for (int i = mrows.size() -1; i >= 0; i--){ 
     ListRow m = mrows.get(i);
 %>
 <tr bgcolor="#ffffcc">

@@ -249,7 +249,7 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
     }
 
     public List<ListRow> buildPageSummary(int page) throws MessagingException {
-        int count = folder.getMessageCount() - 1;
+        int count = folder.getMessageCount();
         int max = 20;
         max = count < max ? count : max;
         int start = count - (page) * max;
