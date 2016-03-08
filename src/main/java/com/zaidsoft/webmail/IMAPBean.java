@@ -252,8 +252,8 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
         int count = folder.getMessageCount();
         int max = 20;
         max = count < max ? count : max;
-        int start = count - (page) * max;
-        int end = start + max;
+        int start = count - page * max + 1;
+        int end = start + max -1;
         List<ListRow> rows = new ArrayList<ListRow>();
         Message[] messages = folder.getMessages(start, end);
         FetchProfile fp = new FetchProfile();
