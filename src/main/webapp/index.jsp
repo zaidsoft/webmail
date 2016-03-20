@@ -2,21 +2,16 @@
 <%@ page import="com.zaidsoft.webmail.*" %>
 <%
   	boolean adv = request.getParameter("advMode") != null; 
-	System.out.println(adv);
   	String email = request.getParameter("email");
-    System.out.println("email"+email);
    if (email == null ) email = "";
     String pass = request.getParameter("pass");
    if (pass == null ) pass = "";
-    System.out.println("pass"+pass);
+
     String host = request.getParameter("host");
-   if (host == null || host ==  ""  || host=="host") host=null;
-	   System.out.println("Host in jsp :: "+host);
-   
-    System.out.println("host"+host);
+   if (host == null ) host="";
+ 
     String user = request.getParameter("user");
    if (user == null ) user = "";
-    System.out.println("user"+user);
     String submit = request.getParameter("ok");
     String msg = "";
     if (submit != null ) {
