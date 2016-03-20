@@ -1,0 +1,151 @@
+
+/*
+=====================================================
+ WebMail - BSTemplate
+    Author: luqman quadri
+    License: Open source - MIT
+
+=====================================================
+
+/*   Default Skin   */
+
+            
+.default-skin .main-header .navbar {
+  background-color: #3c8dbc;
+}
+.default-skin .main-header .navbar .nav > li > a {
+  color: #ffffff;
+}
+.default-skin .main-header .navbar .nav > li > a:hover,
+.default-skin .main-header .navbar .nav > li > a:active,
+.default-skin .main-header .navbar .nav > li > a:focus,
+.default-skin .main-header .navbar .nav .open > a,
+.default-skin .main-header .navbar .nav .open > a:hover,
+.default-skin .main-header .navbar .nav .open > a:focus,
+.default-skin .main-header .navbar .nav > .active > a {
+  background: rgba(0, 0, 0, 0.1);
+  color: #f6f6f6;
+}
+.default-skin .main-header .navbar .sidebar-toggle {
+  color: #ffffff;
+}
+.default-skin .main-header .navbar .sidebar-toggle:hover {
+  color: #f6f6f6;
+  background: rgba(0, 0, 0, 0.1);
+}
+.default-skin .main-header .navbar .sidebar-toggle {
+  color: #fff;
+}
+.default-skin .main-header .navbar .sidebar-toggle:hover {
+  background-color: #367fa9;
+}
+@media (max-width: 767px) {
+  .default-skin .main-header .navbar .dropdown-menu li.divider {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .default-skin .main-header .navbar .dropdown-menu li a {
+    color: #fff;
+  }
+  .default-skin .main-header .navbar .dropdown-menu li a:hover {
+    background: #367fa9;
+  }
+}
+.default-skin .main-header .logo {
+  background-color: #3c8dbc;
+  color: #ffffff;
+  border-bottom: 0 solid transparent;
+}
+.default-skin .main-header .logo:hover {
+  background-color: #357ca5;
+}
+.default-skin .main-header li.user-header {
+  background-color: #3c8dbc;
+}
+.default-skin .content-header {
+  background: transparent;
+}
+.default-skin .wrapper,
+.default-skin .main-sidebar,
+.default-skin .left-side {
+ 
+}
+.default-skin .user-panel > .info,
+.default-skin .user-panel > .info > a {
+  color: #fff;
+}
+.default-skin .sidebar-menu > li.header {
+  color: #4b646f;
+  background: #1a2226;
+}
+.default-skin .sidebar-menu > li > a {
+  border-left: 3px solid transparent;
+}
+.default-skin .sidebar-menu > li:hover > a,
+.default-skin .sidebar-menu > li.active > a {
+  color: #ffffff;
+  background: #1e282c;
+  border-left-color: #3c8dbc;
+}
+.default-skin .sidebar-menu > li > .treeview-menu {
+  margin: 0 1px;
+  background: #2c3b41;
+}
+.default-skin .sidebar a {
+  color: #b8c7ce;
+}
+.default-skin .sidebar a:hover {
+  text-decoration: none;
+}
+.default-skin .treeview-menu > li > a {
+  color: #8aa4af;
+}
+.default-skin .treeview-menu > li.active > a,
+.default-skin .treeview-menu > li > a:hover {
+  color: #ffffff;
+}
+.default-skin .sidebar-form {
+  border-radius: 3px;
+  border: 1px solid #374850;
+  margin: 10px 10px;
+}
+.default-skin .sidebar-form input[type="text"],
+.default-skin .sidebar-form .btn {
+  box-shadow: none;
+  background-color: #374850;
+  border: 1px solid transparent;
+  height: 35px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.default-skin .sidebar-form input[type="text"] {
+  color: #666;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 2px;
+}
+
+.default-skin .sidebar-form input[type="text"]:focus,
+.default-skin .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  background-color: #fff;
+  color: #666;
+}
+.default-skin .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  border-left-color: #fff;
+}
+.default-skin .sidebar-form .btn {
+  color: #999;
+  border-top-left-radius: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 0;
+}
+.default-skin.layout-top-nav .main-header > .logo {
+  background-color: #3c8dbc;
+  color: #ffffff;
+  border-bottom: 0 solid transparent;
+}
+.default-skin.layout-top-nav .main-header > .logo:hover {
+  background-color: #3b8ab8;
+}
