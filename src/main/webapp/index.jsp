@@ -1,23 +1,28 @@
 <%@page contentType="text/html"%> 
 <%@ page import="com.zaidsoft.webmail.*" %>
 <%
-    boolean adv = request.getParameter("advMode") != null;
-    String email = request.getParameter("email");
-    System.out.println(email);
-    if (email == null ) email = "";
+  	boolean adv = request.getParameter("advMode") != null; 
+	System.out.println(adv);
+  	String email = request.getParameter("email");
+    System.out.println("email"+email);
+   if (email == null ) email = "";
     String pass = request.getParameter("pass");
-    if (pass == null ) pass = "";
-    System.out.println(pass);
+   if (pass == null ) pass = "";
+    System.out.println("pass"+pass);
     String host = request.getParameter("host");
-    if (host == null ) host = "";
+   if (host == null || host ==  ""  || host=="host") host=null;
+	   System.out.println("Host in jsp :: "+host);
+   
+    System.out.println("host"+host);
     String user = request.getParameter("user");
-    if (user == null ) user = "";
+   if (user == null ) user = "";
+    System.out.println("user"+user);
     String submit = request.getParameter("ok");
     String msg = "";
     if (submit != null ) {
         try{
           WebMailAuthenticator.authenticate(request, response);
-          response.sendRedirect("list.jsp");
+          response.sendRedirect("jsp/list.jsp");
           return;
        }
        catch (Exception e){ 
@@ -57,7 +62,7 @@
     			<label class="lab" for="exampleInputEmail">Email address</label>
     			
     			<div class="form-group has-feedback">
-            <input type="email" value="<%=email%>" class="form-control" name="email" placeholder="yourname@example.com" required  autofocus>
+            <input type="email"  class="form-control" name="email" placeholder="yourname@example.com" required  autofocus>
             <span class="glyphicon glyphicon-envelope form-control-feedback glyph-color"></span>
           </div>
     			
@@ -68,7 +73,7 @@
                 <label class="lab" for="exampleInputEmailServer">Mail server</label>
                 
                 <div class="form-group has-feedback">
-            <input type="text" class="form-control" name="host" placeholder="imap.example.com">
+            <input type="text" id="dis1" class="form-control" name="host" placeholder="imap.example.com" disabled >
             <span class="glyphicon glyphicon-globe form-control-feedback glyph-color"></span>
           </div>
                 
@@ -76,7 +81,7 @@
                 <label class="lab" for="exampleInputUserName">User Name</label>
                 
                 <div class="form-group has-feedback">
-            <input type="email" class="form-control" name="user" placeholder="yourname@example.com">
+            <input type="email" id="dis2" class="form-control" name="user" placeholder="yourname@example.com"  disabled>
             <span class="glyphicon glyphicon-user form-control-feedback glyph-color"></span>
           </div>
                 
@@ -85,19 +90,12 @@
                 
                 <div class="form-group has-feedback">
                 <label class="lab" for="exampleInputPassword">Password</label>
-            <input type="password" value="<%=pass%>" class="form-control" name="pass" placeholder="*************" required>
+            <input type="password"  class="form-control" name="pass" placeholder="*************" required>
             <span class="glyphicon glyphicon-lock form-control-feedback glyph-color"></span>
           </div>
                 
-                
-                <!-- <label for="exampleInputPassword">Password</label>
-                <input type="password" class="form-control" name="pass" placeholder="Password" required > -->
-                <button class="btn btn-lg btn-primary btn-block" type="submit" name="ok"> Sign in</button>
-               <!--  <label class="checkbox pull-left">
-                    <input type="checkbox" value="remember-me">
-                    Remember me
-                </label> 
-                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>-->
+                <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit"> Sign in</button>
+              	<input type="hidden" name="ok" value="true">
                 </form>
             </div>
 		
@@ -112,35 +110,48 @@
 
 </div>
 
+
 <!--  Error Show  -->
-<% if(request.getAttribute("errorMessage") != null)
-	{%>
+<%if(msg!= ""){%>
 	<br><br>
 	<div class="col-sm-6 col-md-4 col-md-offset-4">
 	<div class="alert alert-danger alert-dismissible text-center" role="alert">
      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-     <strong>Error :: </strong> ${errorMessage}
+     <strong>Error :: </strong> <%=msg%>
     </div></div>
-	<% }%>
+	<%}%>
 <!--  END Error Show  -->
 
 </div>
 
 <div class="footer navbar-default">
-<<%-- jsp:include page="footer.jsp"></jsp:include> --%>
+<jsp:include page="jsp/footer.jsp"></jsp:include> 
 </div>
 
 <script type="text/javascript">
 		 $("#adv").click(function () {
 	         $(this).text(function(i, v){
-	            return v === 'Advanced Login' ? 'Go Back to Intelligent Login' : 'Advanced Login'
+	            return v === 'Advanced Login' ? 'Go Back to Intelligent Login' : 'Advanced Login';
+	            
 	         })
 	     });
-		
-		
+		 $("#adv").click(function () {
+		 if($("#adv").text() === 'Go Back to Intelligent Login'){
+			
+		$("#dis1").prop('disabled', false);
+		$("#dis2").prop('disabled', false);
+		 }
+		 else{
+			 $("#dis1").prop('disabled', true);
+				$("#dis2").prop('disabled', true);
+		 }
+		 });
+			 
+		 
+		 
+	
 		</script>
-				
-		
+
 		<script>
 		$(document).ready(function(){
 			$('.show-loader').hide();
