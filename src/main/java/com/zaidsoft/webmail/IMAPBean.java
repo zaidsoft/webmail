@@ -48,7 +48,8 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
     // POP3 Accound (Server) details
     private String mailServer;
     private String username;
-    private String password;
+	private String password;
+	
 
     //public void msgCache = new Hashtable(h);
     char seperator;
