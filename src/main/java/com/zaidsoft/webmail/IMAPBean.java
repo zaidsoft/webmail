@@ -177,6 +177,8 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
         Properties props = new Properties();
         props.setProperty("mail.store.protocol", "imaps");
         Session session = null;
+        
+       
 
         if (PropertiesHelper.getBooleanProperty("useLocalStore")) {
             // In csae POP3 is to be used as per configuration (unusual)
@@ -218,6 +220,7 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
         //but don't remove the messages from the server
         //inbox.close(false);
         //store.close();
+
     }
 
     private void buildSentContacts() throws MessagingException {
@@ -419,6 +422,7 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	System.out.println("Total Unread messages::: "+x);
 		return x;
 	}
     
