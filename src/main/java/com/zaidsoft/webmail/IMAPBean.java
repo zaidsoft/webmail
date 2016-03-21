@@ -50,7 +50,7 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
     private String username;
     private String password;
 
-    public String getUsername() {
+    public String getUsername() {		// to get the value of username in jsp(in the header to show username)
 		return username;
 	}
 
@@ -408,5 +408,18 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
         }
         return s;
     }
+    
+    // this method should be called when there is a need to know the total unread messages count
+    
+    public int getTotalUnreadMessages(){
+    	int x =0;
+    	try {
+			 x = folder.getUnreadMessageCount();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return x;
+	}
 
 }

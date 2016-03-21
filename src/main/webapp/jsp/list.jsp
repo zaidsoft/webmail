@@ -14,7 +14,6 @@
     b.refresh();
     session.setAttribute("jspTreeImpl", b);
     
-    
  String s = request.getParameter("page");
  if (s == null) s = "1";
  int p = Integer.parseInt(s);    
