@@ -421,5 +421,6 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
 		}
 		return x;
 	}
-
+    
+ // this method should be called when there is a need to know the total recent messages count
 }
