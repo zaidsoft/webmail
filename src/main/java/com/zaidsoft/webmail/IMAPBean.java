@@ -50,7 +50,15 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
     private String username;
     private String password;
 
-    //public void msgCache = new Hashtable(h);
+    public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	//public void msgCache = new Hashtable(h);
     char seperator;
     Folder defaultFolder = null, folder = null;
 
