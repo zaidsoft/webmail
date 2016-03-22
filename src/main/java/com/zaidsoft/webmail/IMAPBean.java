@@ -273,6 +273,7 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
         fp.add("From");
         fp.add("To");
         fp.add("Date");
+        fp.add("IsSeen");
         folder.fetch(messages, fp);
         for (Message m : messages) {
             ListRow row = new ListRow();
@@ -289,6 +290,7 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
                 row.messageID = ((javax.mail.internet.MimeMessage) m).getMessageID();
             }
             row.size = m.getSize();
+            row.seenflag = m.isSet(Flags.Flag.SEEN);			// checking whether message m is seen or not
             rows.add(row);
         }
         return rows;
@@ -311,6 +313,7 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
         boolean attachment;
         Date date;
         long size;
+        boolean seenflag;					// Added to render unseen messages highlighted in jsp
 
         public String getSizeK() throws MessagingException {
             if (size == -1) {
@@ -366,6 +369,15 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
         public void setMessageID(String messageID) {
             this.messageID = messageID;
         }
+
+		public boolean isSeenflag() {
+			return seenflag;
+		}
+
+		public void setSeenflag(boolean seenflag) {
+			this.seenflag = seenflag;
+		}
+
 
     }
 
