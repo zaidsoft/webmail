@@ -1174,6 +1174,25 @@ li.compose-button .btn{
 }
 
 
+.seen{
+	background-color: #f3f3f3;
+}
+.unseen{
+	background-color: #ffffff;
+}
+
+
+
+.table > tbody > tr > td.active:hover,
+.table > tbody > tr > th.active:hover,
+.table > tbody > tr.active:hover > td,
+.table > tbody > tr:hover > .active,
+.table > tbody > tr.active:hover > th {
+  background-color:transparent;
+}
+
+
+
 	/* controll bottons for inbox */
 
 .controll-buttons{

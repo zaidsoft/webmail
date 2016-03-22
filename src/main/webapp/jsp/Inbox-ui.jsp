@@ -287,8 +287,8 @@
      			
      			</div>
      			
-  <div class="table-responsive email-table">          
-  <table class="table table-hover table-striped ">
+   <div class="email-table">          
+  <table class="table">
 
 
 <%-- <tr bgcolor="#ffffcc">
@@ -308,11 +308,15 @@
  for (int i = mrows.size() -1; i >= 0; i--){ 
     ListRow m = mrows.get(i);
     String paperClip = "";
-    if(m.isAttachment()){
+    String seen="";
+    if(m.isAttachment())
     	paperClip = "fa fa-paperclip";
-    }
+    if(m.isSeenflag())
+    	seen = "seen";
+    else seen = "unseen";
+    
 %>
-    <tr href="show.jsp?folder=<%=folder%>&msgID=<%=m.getMessageID()%>" >
+    <tr class="<%=seen%>" href="show.jsp?folder=<%=folder%>&msgID=<%=m.getMessageID()%>" >
         <td><input type="checkbox" value="" name="<%=i%>"></td>
         <td> <%=m.getFrom()%> </td>
         <td><b><%=m.getSubject()%></b>    </td>
