@@ -19,13 +19,8 @@
  if (s == null) s = "1";
  int p = Integer.parseInt(s);  
  String uname= b.getUsername();
+ int unreadMsg = b.getTotalUnreadMessages();
 %>
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -135,7 +130,7 @@
             
 	           <li class="hello">
 	              <a href="#">
-	                <i class="fa fa-envelope-o"></i> <span>Inbox</span> <small class="label pull-right bg-green">13 new</small>
+	                <i class="fa fa-envelope-o"></i> <span>Inbox</span> <small class="label pull-right bg-green"><%=unreadMsg %> unread</small>
 	              </a>
 	           </li>
             
@@ -244,7 +239,7 @@
      			
      			
      			<div class="pull-right">
-                      1-30/<%=b.getMessageCount()%>
+                      1-20/<%=b.getMessageCount()%>
                       <div class="btn-group">
                         <button class="btn btn-default btn-sm"  <%= ( p <= 1 ) ? "disabled=\"true\"" : "" %> onClick="document.location.href='list.jsp?folder=<%=folder%>&page=<%=p-1%>'"><i class="fa fa-chevron-left"></i></button>
                         <button class="btn btn-default btn-sm"  <%= ( p == b.getMessageCount()) ? "disabled=\"true\"" : "" %> onClick="document.location.href='list.jsp?folder=<%=folder%>&page=<%=p+1%>'"> <i class="fa fa-chevron-right"></i></button>
@@ -254,7 +249,7 @@
      			</div>
      			<div class ="alert-on-select">
 	     			<div class="alert alert-danger alert-dabba" role="alert"> 
-	     				All <b>30 conversations</b> on this page are selected 
+	     				All <b>20 conversations</b> on this page are selected 
 	     			</div>
      			</div>
      			<div class="controll-buttons">
@@ -294,233 +289,38 @@
      			
   <div class="table-responsive email-table">          
   <table class="table table-hover table-striped ">
-    
+
+
+<%-- <tr bgcolor="#ffffcc">
+    <td class="ask"><INPUT class = "on-ask" name="<%=i%>" type="checkbox"></td>
+    <td class="ask">&nbsp;<%= m.isAttachment() ? "A" : ""%>&nbsp;</td>
+    <td class="ask">&nbsp;<%=m.getFrom()%>&nbsp;</td>
+    <td class="ask"><a href="show.jsp?folder=<%=folder%>&msgID=<%=m.getMessageID()%>">
+        &nbsp;<%=m.getSubject()%>&nbsp;</a>
+    </td>
+    <td class="ask"><%=m.getDate() %></td> 
+    <td class="ask" align="right"><%=m.getSizeK()%>k&nbsp;</td>
+</tr> --%>
+
     <tbody>
-    <tr href="#">
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
+    <%
+ List<ListRow> mrows = b.buildPageSummary(p);
+ for (int i = mrows.size() -1; i >= 0; i--){ 
+    ListRow m = mrows.get(i);
+    String paperClip = "";
+    if(m.isAttachment()){
+    	paperClip = "fa fa-paperclip";
+    }
+%>
+    <tr href="show.jsp?folder=<%=folder%>&msgID=<%=m.getMessageID()%>" >
+        <td><input type="checkbox" value="" name="<%=i%>"></td>
+        <td> <%=m.getFrom()%> </td>
+        <td><b><%=m.getSubject()%></b>    </td>
+        <td><i class="<%=paperClip%>"></i></td>
+        <td><%=m.getDate() %></td>
     </tr>
-      <tr href="#">
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr href="#">
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td class="foo"> Syed luqman quadri </td>
-        <td class="foo"><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td class="foo"><i class="fa fa-paperclip"></i></td>
-        <td class="foo">4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
-       <tr>
-        <td><input type="checkbox" value=""></td>
-        <td> Syed luqman quadri </td>
-        <td><b>How are You? </b> - Its raining here!!! What about there? everything fine?? hope u will be doing good there ....</td>
-        <td><i class="fa fa-paperclip"></i></td>
-        <td>4 mins ago</td>
-       </tr>
+    <% } %>
+      
     </tbody>
   </table>
   </div>
@@ -539,14 +339,12 @@
            immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
-      
-      
-      
-      
-      
-      
-      
-      <!-- footer starts -->
+
+      <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
+    </div><!-- ./wrapper -->
+	<!-- footer starts -->
 
     <footer class="main-footer">
     
@@ -555,17 +353,7 @@
           <b>Version</b> 1.0
         </div>
         <strong>Copyright &copy; 2015 <a href="#">luqman quadri</a>.</strong> All rights reserved.
-      </footer> <!-- ./footer ends -->
-      
-      
-      
-      
-      
-      <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
-    </div><!-- ./wrapper -->
-    
+      </footer> <!-- ./footer ends -->    
     
 
     <!-- jQuery -->
@@ -587,6 +375,13 @@
 
     
     <!-- this function is used to make the menu from sidebar active/selected untill any other menu is selected on the page -->
+   <script>
+   
+   
+   </script>
+   
+   
+   
    <script>
    $('li.hello').click(function() {
 	    $('li.hello').removeClass('activate-menu');
