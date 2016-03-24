@@ -116,6 +116,4 @@ public class WebMailAuthenticator {
         String s = a.get(0).toString();
         return s.split(" ")[1].trim();
     }
-     
-    
 }

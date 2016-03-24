@@ -28,21 +28,3 @@
   </welcome-file-list>
 </web-app>
 
-        <description>View mail attachement in browser</description>
-        <servlet-name>attachview</servlet-name>
-        <servlet-class>com.zaidsoft.webmail.AttachmentProviderServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>attachview</servlet-name>
-        <url-pattern>/attachview</url-pattern>
-    </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-</web-app>
-
