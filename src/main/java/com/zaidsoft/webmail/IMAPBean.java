@@ -226,6 +226,7 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
     public List<String> buildSentContacts() throws MessagingException {
     	System.out.println("===================== Inside buildSentContacts  ===============");
     	List<String> contacts = new ArrayList<String>();
+    	Folder tempFolder = folder;  // used to store the current folder name so that after building contacts the folder name can be reset to its original
         folder = defaultFolder.getFolder("Sent");
         if (!folder.exists()) {
             folder = defaultFolder.getFolder("Sent Mail");
@@ -267,10 +268,15 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
                 }
             }}
         }
+        setFolder(tempFolder.toString());  
+        /* setting the folder name what it was before calling this contact function
+         this is done to avoid the problem that when this method is invoked from ConListGenerator servlet, it sets the defaultfolder as sent folder
+         */        
         return contacts;
     } else
     	{
     	contacts.add("Sent folder is empty");
+    	setFolder(tempFolder.toString());
 		return contacts;
     	}
     }

@@ -9,6 +9,17 @@
     <servlet-name>attachview</servlet-name>
     <url-pattern>/attachview</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <description>View mail attachement in browser</description>
+    <servlet-name>ConListGenerator</servlet-name>
+    <servlet-class>com.zaidsoft.webmail.ConListGenerator</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConListGenerator</servlet-name>
+    <url-pattern>/ConListGenerator</url-pattern>
+  </servlet-mapping>
+  
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>

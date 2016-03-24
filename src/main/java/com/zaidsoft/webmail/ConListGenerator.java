@@ -13,11 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.zaidsoft.webmail.*;
+import com.google.gson.*;
 
 /**
  * Servlet implementation class ConListGenerator
  */
-@WebServlet(description = "generates contact list and serve it to user using ajax(json)", urlPatterns = { "/ConListGenerator" })
+/*@WebServlet(description = "generates contact list and serve it to user using ajax(json)", urlPatterns = { "/ConListGenerator" })*/
 public class ConListGenerator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -57,8 +58,9 @@ public class ConListGenerator extends HttpServlet {
 			e.printStackTrace();
 		}
 		System.out.println(mycontacts.toString());
-		
- 		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(new Gson().toJson(mycontacts)); 		
 	}
 
 }
