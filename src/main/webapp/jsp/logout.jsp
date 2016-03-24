@@ -1,41 +1,49 @@
 <%@page contentType="text/html"%>
 <html>
-<head><title>Logged Out</title>
+<head>
 <%@ page import="com.zaidsoft.webmail.*" %>
 <%
      session.invalidate();
 %>
-<script>
-<!--
-function finish(){ 
-    window.close();
-}
-// -->
-</script>
-<link rel=stylesheet type="text/css" href="skins/normal-default.css">
+      
+    <title>WebMail :: Logout</title>
+    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebMail :: Login</title>
+
+<link rel=stylesheet type="text/css" href="ui-resources/css/login.css">
+<link rel=stylesheet type="text/css" href="ui-resources/css/WebmailBST.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+
+
 </head>
-<body>
-<table align="center" width="100%">
-<tr>
-<td bgcolor="silver" height="100px" align=right><h4>&nbsp;&nbsp;&nbsp;&nbsp;</h4>
-</td>
-</tr>
-<tr>
-<td>
-<div style="text-align: center">
-<br><br><br>
-<h3> You have successfully logged out. </h3>
-<br><br><br>
-If you wish, you may login again by going to <a target=_self href="login.jsp">Login Page</a>
+  <body class="hold-transition default-skin sidebar-mini">
+    <div class="container">
+
+		
+		<div class="jumbotron">
+        <h1>WebMail</h1>
+        <p class="lead">You have successfully logged out.</p>
+        <p><a class="btn btn-lg btn-success" href="../index.jsp" role="button">Log in again</a></p>
+      </div>
+      
+    </div><!-- ./wrapper -->
+    <div class="footer navbar-default">
+<jsp:include page="footer.jsp"></jsp:include>
 </div>
-<br><br><br><br>
-<br><br><br><br><br>
-</td>
-</tr>
-<tr>
-<td bgcolor="silver" height="300">&nbsp;&copy;Zaidsoft. All Rights Reserved.
-</td>
-</tr>
-</table>
-</body>
+    
+
+    <!-- jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!-- Bootstrap -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+  </body>
 </html>
+
