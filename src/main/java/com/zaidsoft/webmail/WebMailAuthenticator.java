@@ -86,6 +86,7 @@ public class WebMailAuthenticator {
                 //login is successfull return
                 ses.setAttribute("b", b);
                 ses.setAttribute("s", s);
+                ses.setAttribute("imapConList", b);  		// Added object b in session to use it in ConListGenerator servlet.
                 ses.setAttribute("zaidsoft.webmail.UserLoggedIn", "true");
                 return;
             } catch (javax.mail.AuthenticationFailedException e) {

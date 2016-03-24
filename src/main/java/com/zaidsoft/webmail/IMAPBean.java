@@ -223,40 +223,56 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
 
     }
 
-    private void buildSentContacts() throws MessagingException {
-        List<String> contacts = new ArrayList<String>();
+    public List<String> buildSentContacts() throws MessagingException {
+    	System.out.println("===================== Inside buildSentContacts  ===============");
+    	List<String> contacts = new ArrayList<String>();
         folder = defaultFolder.getFolder("Sent");
         if (!folder.exists()) {
             folder = defaultFolder.getFolder("Sent Mail");
+            if (!folder.exists()) {
+                folder = defaultFolder.getFolder("[Gmail]/Sent Mail");
+            }
         }
+        System.out.println("Sent item folder is:::"+folder);
+        folder.open(Folder.READ_ONLY);
         Message[] messages = folder.getMessages();
         FetchProfile fp = new FetchProfile();
         fp.add(FetchProfile.Item.ENVELOPE);
         fp.add("To");
         folder.fetch(messages, fp);
+        if(messages != null){
         for (Message m : messages) {
             Address[] as = m.getRecipients(Message.RecipientType.TO);
+            if(as!=null){
             for (Address a : as) {
                 String s = a.toString().intern();
                 if (!contacts.contains(s)) {
                     contacts.add(s);
                 }
-            }
+            }}
             as = m.getRecipients(Message.RecipientType.CC);
+            if(as!=null){
             for (Address a : as) {
                 String s = a.toString().intern();
                 if (!contacts.contains(s)) {
                     contacts.add(s);
                 }
-            }
+            }}
             as = m.getRecipients(Message.RecipientType.BCC);
+            if(as!=null){
             for (Address a : as) {
                 String s = a.toString().intern();
                 if (!contacts.contains(s)) {
                     contacts.add(s);
                 }
-            }
+            }}
         }
+        return contacts;
+    } else
+    	{
+    	contacts.add("Sent folder is empty");
+		return contacts;
+    	}
     }
 
     public List<ListRow> buildPageSummary(int page) throws MessagingException {
@@ -274,6 +290,7 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
         fp.add("To");
         fp.add("Date");
         fp.add("IsSeen");
+        fp.add("Content");
         folder.fetch(messages, fp);
         for (Message m : messages) {
             ListRow row = new ListRow();
@@ -291,6 +308,7 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
             }
             row.size = m.getSize();
             row.seenflag = m.isSet(Flags.Flag.SEEN);			// checking whether message m is seen or not
+           
             rows.add(row);
         }
         return rows;
@@ -314,7 +332,7 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
         Date date;
         long size;
         boolean seenflag;					// Added to render unseen messages highlighted in jsp
-
+        String msgcontent;					// Added to render part of msg in inbox row like gmail  // not working yet
         public String getSizeK() throws MessagingException {
             if (size == -1) {
                 return "0";
@@ -377,6 +395,15 @@ public class IMAPBean implements java.io.Serializable, JspTreeInfo {
 		public void setSeenflag(boolean seenflag) {
 			this.seenflag = seenflag;
 		}
+
+		public String getMsgcontent() {
+			return msgcontent;
+		}
+
+		public void setMsgcontent(String msgcontent) {
+			this.msgcontent = msgcontent;
+		}
+
 
 
     }

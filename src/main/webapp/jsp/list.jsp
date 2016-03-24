@@ -61,6 +61,7 @@ function checkDel(target){
     <td align="center" class="caption"> Attach </td>
     <td align="center" class="caption"> From </td>
     <td align="center" class="caption"> Subject </td>
+    <td align="center" class="caption"> Content </td>
     <td align="center" class="caption"> Received </td>
     <td align="center" class="caption"> Size </td>
 </tr>
