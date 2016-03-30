@@ -204,7 +204,7 @@ function manage_object() {
       });
     }}
   };
-  
+   
   /* Popover()
    * ==========
    this function is used to provide the popover as the user hovers over the contact name in contact list
@@ -217,7 +217,8 @@ function manage_object() {
 	$(".pop").popover({ 
 		trigger: "manual",
 		html: true, 
-		content: function() { return $('#popover-content').html(); },
+		content: function() {
+			return $('#popover-content').html();},
 		animation:false})
 		
     .on("mouseenter", function () {
@@ -236,10 +237,11 @@ function manage_object() {
                 $(_this).popover("hide");
             }
         }, 60);
-/*}); }, 60);*/
   });
+/* ===============================// Contact List Ends  ===========================================*/	
+
 	
-/*  ============= 
+	/*  =============  Control Buttons 
  * following function is used to select all the listed mail when user clicks on select all button.
  *   */
 	
@@ -347,6 +349,8 @@ function manage_object() {
 	    });
 	});*/
 	
+	
+	 /*Following function is used to show hover effect when user mouseover a message row*/
 	$(function(){
 		$('tbody tr').each(function(){
 			$(this).css('cursor', 'pointer').hover(function(){
@@ -361,4 +365,18 @@ function manage_object() {
 		});	
 	});	
 	
+	
+	
+	/* ================================== Contact List Starts ===================================*/
+	 /* Contact List
+	  * 	Adding contacts in contact list using ajax(json)
+	  * 	Making the first letter as the contact pic
+	  * 	On mouseover effect of contact list 
+	  * 
+	  * 		*/
+	  
+	  
+	
+	
+			
 	

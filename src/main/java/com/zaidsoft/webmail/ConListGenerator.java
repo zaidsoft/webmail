@@ -58,9 +58,9 @@ public class ConListGenerator extends HttpServlet {
 			e.printStackTrace();
 		}
 		System.out.println(mycontacts.toString());
-		response.setContentType("application/json");
+		response.setContentType("text");
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(new Gson().toJson(mycontacts)); 		
+		response.getWriter().write(mycontacts.toString()); 		
 	}
 
 }

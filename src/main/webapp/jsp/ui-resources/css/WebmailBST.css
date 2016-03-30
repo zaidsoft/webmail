@@ -658,7 +658,9 @@ li.compose-button .btn{
 	padding-bottom: 10px;
 	padding-left: 2px;
 	list-style-type:none;
-	z-index: 12
+	z-index: 12;
+	white-space: nowrap;
+	overflow: hidden;
 	
 	
 }
