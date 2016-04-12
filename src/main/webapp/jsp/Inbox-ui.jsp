@@ -426,7 +426,7 @@ $(document).ready(function(){   	// calling servlet and retrieving json response
 		    var array = data.split(', ');
 		   // alert(array);
 		    var count = array.length;
-		    alert(count);
+		    //alert(count);
 		    	var cl = '';
 		    	 for(var i=0;i<count; i++)
 		    		{	 
@@ -449,15 +449,15 @@ $(document).ready(function(){   	// calling servlet and retrieving json response
 		    	   
 		    	   var url = "ui-resources/scroll-bar/js/jquery.nanoscroller.js";
 		    	   $.getScript( url, function() {
-		    		  alert("nano"); 
+		    		  //alert("nano"); 
 		    	   });
 		    	   var url = "ui-resources/scroll-bar/js/main.js";
 		    	   $.getScript( url, function() {
-		    		  alert("main"); 
+		    		 // alert("main"); 
 		    	   });
 		    	   var url = "ui-resources/js/WebMailBST.js";
 		    	   $.getScript( url, function() {
-			    		  alert("wmbst"); 
+			    		//  alert("wmbst"); 
 			    	   });
 		    	   
 		    	   /* var tem="<script type=\"text/javascript\" src=\"ui-resources/scroll-bar/js/jquery.nanoscroller.js\"><\/script>";
