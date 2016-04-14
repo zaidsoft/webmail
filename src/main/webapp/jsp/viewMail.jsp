@@ -163,15 +163,56 @@
            <ul class="mc"><li> My Contacts</li></ul> 
            <!-- contact List Starts -->  
            <!-- <div id="nan"> -->
+           
            <div class="nano">
-          <jsp:include page="conList.jsp"/> 
-           </div>
-           
-           
-           
-           
-           
-           
+           	<!-- <div class="nano-content">    -->        
+          <ul class="nano-content"> 
+             
+        	  
+          
+			 <!--  <li class="list-con pop" data-toggle="popover" data-placement="right" data-html="true" data-container="body"><a href="#"><img data-name="luqman quadri" class="demo user-image" alt="User Image">luqman Quadri</a></li>
+          	  <li class="list-con pop" data-toggle="popover" data-placement="right" data-html="true" data-container="body"><a href="#"><img data-name="David Warner" class="demo user-image" alt="User Image">David warner</a></li>
+          	  <li class="list-con pop" data-toggle="popover" data-placement="right" data-html="true" data-container="body"><a href="#"><img data-name="sultan" class="demo user-image" alt="User Image">Sultan mirza</a></li>
+          	  <li class="list-con pop" data-toggle="popover" data-placement="right" data-html="true" data-container="body"><a href="#"><img data-name="quadri" class="demo user-image" alt="User Image">Quadri abdul </a></li>
+          	  <li class="list-con pop" data-toggle="popover" data-placement="right" data-html="true" data-container="body"><a href="#"><img data-name="Tom Cruze" class="demo user-image" alt="User Image">tom Cruze</a></li>
+          	  <li class="list-con pop" data-toggle="popover" data-placement="right" data-html="true" data-container="body"><a href="#"><img data-name="Shubhra" class="demo user-image" alt="User Image">Shubhra Yadav</a></li>
+          	  <li class="list-con pop" data-toggle="popover" data-placement="right" data-html="true" data-container="body"><a href="#"><img data-name="Naim" class="demo user-image" alt="User Image">naim ahmad</a></li>
+          	  <li class="list-con pop" data-toggle="popover" data-placement="right" data-html="true" data-container="body"><a href="#"><img data-name="virat" class="demo user-image" alt="User Image">virat kohli</a></li>
+          	  <li class="list-con pop" data-toggle="popover" data-placement="right" data-html="true" data-container="body"><a href="#"><img data-name="maxwell" class="demo user-image" alt="User Image">Maxwell</a></li>
+          	  <li class="list-con pop" data-toggle="popover" data-placement="right" data-html="true" data-container="body"><a href="#"><img data-name="shane" class="demo user-image" alt="User Image">Shane Watson</a></li>
+          	  <li class="list-con pop" data-toggle="popover" data-placement="right" data-html="true" data-container="body"><a href="#"><img data-name="sonalika" class="demo user-image" alt="User Image">Sonalika</a></li> -->
+          	  
+          	  
+    
+         </ul> 
+        
+        <div id="popover-content" class="hide">
+       
+         <ul class="contact-popover-box">
+				<li class="user-img-name">
+                    <img src="WM-Resources/img/profile.png" class="img-circle" alt="User Image">
+                    <p>
+                      Syed Luqman Quadri
+                      <small>luqman.quadri@gmail.com</small>
+                    </p>
+                  </li>
+					<li class="user-footer">
+                    <div class="pull-left">
+                      <a href="#" class="btn btn-default btn-flat">Send Email</a>
+                    </div>
+                    <div class="pull-right">
+                      <a href="#" class="btn btn-default btn-flat">View Conversation</a>
+                    </div>
+                  </li>
+                </ul>  
+               
+    </div> 
+        
+        
+        
+        
+        
+        </div>
            <!-- </div> -->
              
          <!--  ./contact list ends -->
@@ -187,6 +228,7 @@
       </aside>
       
       <!-- Inbox content that is list of emails starts -->
+      
       <div class= "main-content">
      	<div class="container-fluid">
      	
@@ -369,7 +411,7 @@
    </script>
    
   
-  <!-- <script type="text/javascript">
+  <script type="text/javascript">
   
 $(document).ready(function(){   	// calling servlet and retrieving json response
 	var flag=0;
@@ -446,7 +488,7 @@ $(document).ready(function(){   	// calling servlet and retrieving json response
 		   
 
 });
-</script> -->
+</script>
 
  <script type="text/javascript">
    $(document).ready(function(){
@@ -466,7 +508,8 @@ $(document).ready(function(){   	// calling servlet and retrieving json response
 
 </script>
 
-
   </body>
+<!--   <script type="text/javascript" src="ui-resources/scroll-bar/js/jquery.nanoscroller.js"></script>
+  <script type="text/javascript" src="ui-resources/scroll-bar/js/main.js"></script> -->
 
 </html>
