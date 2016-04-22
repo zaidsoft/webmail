@@ -46,7 +46,7 @@
 
 <body>
 <!-- Showing the loader icon -->
-	<div class="show-loader"><label> loading .... </label></div>
+	<div class="show-loader"><label> loading <br> Please wait .... </label></div>
 <div class="container">
     <div class="row complete-page">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
