@@ -101,11 +101,11 @@ $(document).ready(function(){   	// calling servlet and retrieving json response
 		    	   $.getScript( url, function() {
 		    		  alert("nano"); 
 		    	   });
-		    	  /*  var url = "ui-resources/scroll-bar/js/main.js";
+		    	  /* var url = "ui-resources/scroll-bar/js/main.js";
 		    	   $.getScript( url, function() {
 		    		  alert("main"); 
-		    	   }); */
-		    	   var url = "ui-resources/js/WebMailBST.js";
+		    	   });  */
+		    	   var url = "ui-resources/js/conListjs.js";
 		    	   $.getScript( url, function() {
 			    		  alert("wmbst"); 
 			    	   });  

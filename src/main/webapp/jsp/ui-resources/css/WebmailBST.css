@@ -37,7 +37,7 @@ body {
 }
 /* Layout */
 .wrapper {                           /* haha */
-  min-height: 100%;
+  /* min-height: 100%; */
   position: static;
   overflow: hidden;
 }
@@ -82,7 +82,7 @@ body {
 }
 .main-content,
 .right-side {
-  min-height: 100%;
+  /* min-height: 100%; */
   background-color: #ecf0f5;
   z-index: 800;
 }
@@ -360,7 +360,7 @@ a:focus {
   top: 0;
   left: 0;
   padding-top: 50px;
-  min-height: 100%;
+ /*  min-height: 100%; */
   width: 200px;
   z-index: 810;
   -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
@@ -619,7 +619,7 @@ li.compose-button .btn{
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
   } */
   
-  .nano {width: 200px; height: 200px;}
+  .nano {min-height: 100%; width: 200px; height: 250px;}
 .nano > .nano-content { padding-left: 20px;  list-style-type:none; right: 0px;}
 .nano > .nano-pane   { background: #888; margin-right: 5px; }
 .nano > .nano-pane > .nano-slider { background: #222d32; margin-top:  5px; margin-bottom: 40px; margin-right: 1px; }
@@ -741,6 +741,16 @@ li.compose-button .btn{
     width: 50px!important;
     z-index: 850;
   }
+  
+    /*  to make compose button invisible on mini sidebar */
+  .sidebar-mini.sidebar-collapse .sidebar-menu>.comp-button {
+    visibility: hidden;
+  }
+  	/*  to make small compose button icon visible on mini sidebar */
+  .sidebar-mini.sidebar-collapse .sidebar-menu.c-button {
+    visibility: visible;
+  }
+  
   .sidebar-mini.sidebar-collapse .sidebar-menu > li {
     position: relative;
   }
@@ -1124,7 +1134,7 @@ li.compose-button .btn{
 
 .content{
 	background-color: #ffffff;
-	min-height: 250px;
+	min-height: 100%;;
   	margin-right: auto;
   	margin-left: auto;
   	margin-top: 15px;
@@ -1170,8 +1180,9 @@ li.compose-button .btn{
 
 .email-table{
 	 padding: 0px;
-	 height: 400px;
+	/*  height: 400px; */
 	 overflow: scroll;
+	 /* min-height: 100%; */
 }
 
 .email-table tbody tr{
