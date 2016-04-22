@@ -62,15 +62,15 @@
         
         <script type="text/javascript">
   
-$(document).ready(function(){   	// calling servlet and retrieving json response
+$(document).ready(function(){   	// calling servlet and retrieving ajax response
 	var flag=0;
 	$.ajax({
 		  type: 'POST',
 		  url: '../ConListGenerator',
 		  dataType: 'text',
-		  success: function(jsonData) {
-			 // alert(jsonData);
-		    var data = jsonData.replace(/\[/g , "");
+		  success: function(ajaxData) {
+			 // alert(ajaxData);
+		    var data = ajaxData.replace(/\[/g , "");
 		    //alert(data);
 		    		 
 		    var array = data.split(', ');
@@ -105,7 +105,7 @@ $(document).ready(function(){   	// calling servlet and retrieving json response
 		    	   $.getScript( url, function() {
 		    		  alert("main"); 
 		    	   });  */
-		    	   var url = "ui-resources/js/conListjs.js";
+		    	   var url = "ui-resources/js/conlistjs.js";
 		    	   $.getScript( url, function() {
 			    		  alert("wmbst"); 
 			    	   });  
@@ -149,7 +149,7 @@ $(document).ready(function(){   	// calling servlet and retrieving json response
 
 
 
- <!-- <script src="ui-resources/js/WebMailBST.js"></script> 
+ <!-- <script src="ui-resources/js/webmail.js"></script> 
   <script src="ui-resources/scroll-bar/js/jquery.nanoscroller.js"></script> 
    <script src="ui-resources/scroll-bar/js/main.js"></script>  -->
 

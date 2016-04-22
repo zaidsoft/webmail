@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     
     <!-- Default Theme -->
-    <link rel="stylesheet" href="ui-resources/css/WebmailBST.css">
+    <link rel="stylesheet" href="ui-resources/css/webmail.css">
     
    	<!-- Default Skin -->
      <link rel="stylesheet" href="ui-resources/css/skins/default-skin.css"> 
@@ -79,14 +79,15 @@
              
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img data-name="luqman" class="demo user-image" alt="User Image">
+                  <img data-name="<%=uname %>" class="demo user-image" alt="User Image">
+                  
                   
                   <span class="hidden-xs"><%=uname %></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="WM-Resources/img/profile.png" class="img-circle" alt="User Image">
+                    <img data-name= "<%=uname%>" class="demo user-image" alt="User Image">
                     <p>
                       <%=uname %>
                       <small><%=uname %></small>
@@ -303,7 +304,7 @@
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>  
     <!-- WebMailBST JS -->
-     <script src="ui-resources/js/WebMailBST.js"></script> 
+     <script src="ui-resources/js/webmail.js"></script> 
      
      <!-- initial JS based on jquery -->
      <script src="ui-resources/js/initial.js"></script> 
