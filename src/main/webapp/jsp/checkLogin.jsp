@@ -1,6 +1,6 @@
 <% 
 if ( session.getAttribute("zaidsoft.webmail.UserLoggedIn") == null ){
-    response.sendRedirect("login.jsp");
+    response.sendRedirect("../index.jsp");
     return;
 }
 %>
