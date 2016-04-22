@@ -283,12 +283,7 @@
 	<!-- footer starts -->
 
    <!--  <footer class="main-footer">
-    
-    	
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 1.0
-        </div>
-        <strong>Copyright &copy; 2015 <a href="#">luqman quadri</a>.</strong> All rights reserved.
+
       </footer> ./footer ends    --> 
     
 <jsp:include page="footer.jsp"></jsp:include>
