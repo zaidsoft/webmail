@@ -87,7 +87,7 @@
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img data-name= "<%=uname%>" class="demo user-image" alt="User Image">
+                    <img data-name= "<%=uname%>" class="demo img-circle" alt="User Image">
                     <p>
                       <%=uname %>
                       <small><%=uname %></small>
@@ -130,32 +130,32 @@
 	              </a>
 	           </li>
             
-	           <li class="hello">
-	              <a href="#">
-	                <i class="fa fa-envelope-o"></i> <span>Inbox</span> <small class="label pull-right bg-green"><%=unreadMsg %> unread</small>
+	           <li class="hello inbox">
+	              <a href="inbox.jsp">
+	                <i class="fa fa-envelope-o"></i> <span>Inbox</span> <small class="label label-success pull-right bg-green"><%=unreadMsg %> unread</small>
 	              </a>
 	           </li>
             
-	            <li class="hello">
+	            <li class="hello sent-item">
 	              <a href="#">
 	                <i class="fa fa-paper-plane-o"></i> <span>Sent Items</span> 
 	              </a>
 	            </li>
 	            
-	            <li class="hello">
+	            <li class="hello draft">
 	              <a href="#">
 	                <i class="fa fa-folder-open-o"></i> <span>Drafts</span> 
 	              </a>
 	            </li>
 	            
-	            <li class="hello">
+	            <li class="hello spam">
 	              <a href="#">
 	  				<i class="fa fa-ban"></i>
 	  				<span>Spams</span>
 	              </a>
 	            </li>
             
-	            <li class="hello">
+	            <li class="hello trash">
 	              <a href="#">
 	                <i class="fa fa-trash-o"></i> <span>Trash</span>
 	              </a>
@@ -178,12 +178,6 @@
              
          <!--  ./contact list ends -->
          
-       <!--   <ul>
-         <li>
-         	i
-         </li>
-         </ul> -->
-       
         </section>
         <!-- /.sidebar -->
       </aside>
@@ -311,9 +305,11 @@
    
     <!-- this function is used to make the menu from sidebar active/selected untill any other menu is selected on the page -->
    <script>
-   $('li.hello').click(function() {
+   $(document).ready(function(){
+   //$('li.hello').click(function() {
 	    $('li.hello').removeClass('activate-menu');
-	    $(this).addClass('activate-menu');
+	    $('li.inbox').addClass('activate-menu');
+  
 	});
    
    </script> 

@@ -99,7 +99,7 @@ $(document).ready(function(){   	// calling servlet and retrieving ajax response
 		    	   
 		    	   var url = "ui-resources/scroll-bar/js/jquery.nanoscroller.js";
 		    	   $.getScript( url, function() {
-		    		  alert("nano"); 
+		    		 // alert("nano"); 
 		    	   });
 		    	  /* var url = "ui-resources/scroll-bar/js/main.js";
 		    	   $.getScript( url, function() {
@@ -107,11 +107,11 @@ $(document).ready(function(){   	// calling servlet and retrieving ajax response
 		    	   });  */
 		    	   var url = "ui-resources/js/conlistjs.js";
 		    	   $.getScript( url, function() {
-			    		  alert("wmbst"); 
+			    		 // alert("wmbst"); 
 			    	   });  
 		    	   $.getScript( "ui-resources/scroll-bar/js/main.js" )
 		    	   .done(function() {
-		    	     alert( "main" );
+		    	    // alert( "main" );
 		    	   })
 		    	   .fail(function( jqxhr, settings, exception ) {
 		    	     alert( "Triggered ajaxError handler." );
