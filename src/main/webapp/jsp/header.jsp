@@ -10,7 +10,7 @@
     <td class="t-strip" align="left" valign="top">&nbsp;
     </td>
     <td class="t-strip" align="right" valign="top">&nbsp;
-        <a class="a" href="list.jsp">INBOX&nbsp;&nbsp;</a>::&nbsp;&nbsp;
+        <a class="a" href="inbox.jsp">INBOX&nbsp;&nbsp;</a>::&nbsp;&nbsp;
         <a class="a" href="logout.jsp">Logout&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
     </td>
 </tr>
