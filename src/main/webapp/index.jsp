@@ -1,3 +1,5 @@
+
+
 <%@page contentType="text/html"%> 
 <%@ page import="com.zaidsoft.webmail.*" %>
 <%
@@ -17,7 +19,7 @@
     if (submit != null ) {
         try{
           WebMailAuthenticator.authenticate(request, response);
-          response.sendRedirect("jsp/list.jsp");
+          response.sendRedirect("jsp/inbox.jsp");
           return;
        }
        catch (Exception e){ 

@@ -1,15 +1,19 @@
 /*
-=====================================================
- WebMail-BSTemplate
- 
-    Author: luqman quadri
-    License: Open source - MIT
-
-=====================================================        
-
-		----- GENERAL LAYOUT ------
+ * Copyright 2016 Syed Luqman Quadri. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
-
 
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
 
@@ -31,7 +35,7 @@ body {
 }
 /* Layout */
 .wrapper {                           /* haha */
-  min-height: 100%;
+  /* min-height: 100%; */
   position: static;
   overflow: hidden;
 }
@@ -76,7 +80,7 @@ body {
 }
 .main-content,
 .right-side {
-  min-height: 100%;
+  /* min-height: 100%; */
   background-color: #ecf0f5;
   z-index: 800;
 }
@@ -354,7 +358,7 @@ a:focus {
   top: 0;
   left: 0;
   padding-top: 50px;
-  min-height: 100%;
+ /*  min-height: 100%; */
   width: 200px;
   z-index: 810;
   -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
@@ -613,7 +617,7 @@ li.compose-button .btn{
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
   } */
   
-  .nano {width: 200px; height: 200px;}
+  .nano {min-height: 100%; width: 200px; height: 250px;}
 .nano > .nano-content { padding-left: 20px;  list-style-type:none; right: 0px;}
 .nano > .nano-pane   { background: #888; margin-right: 5px; }
 .nano > .nano-pane > .nano-slider { background: #222d32; margin-top:  5px; margin-bottom: 40px; margin-right: 1px; }
@@ -658,7 +662,9 @@ li.compose-button .btn{
 	padding-bottom: 10px;
 	padding-left: 2px;
 	list-style-type:none;
-	z-index: 12
+	z-index: 12;
+	white-space: nowrap;
+	overflow: hidden;
 	
 	
 }
@@ -733,6 +739,16 @@ li.compose-button .btn{
     width: 50px!important;
     z-index: 850;
   }
+  
+    /*  to make compose button invisible on mini sidebar */
+  .sidebar-mini.sidebar-collapse .sidebar-menu>.comp-button {
+    visibility: hidden;
+  }
+  	/*  to make small compose button icon visible on mini sidebar */
+  .sidebar-mini.sidebar-collapse .sidebar-menu.c-button {
+    visibility: visible;
+  }
+  
   .sidebar-mini.sidebar-collapse .sidebar-menu > li {
     position: relative;
   }
@@ -1116,7 +1132,7 @@ li.compose-button .btn{
 
 .content{
 	background-color: #ffffff;
-	min-height: 250px;
+	min-height: 100%;;
   	margin-right: auto;
   	margin-left: auto;
   	margin-top: 15px;
@@ -1162,7 +1178,9 @@ li.compose-button .btn{
 
 .email-table{
 	 padding: 0px;
-	 height: 400px;
+	/*  height: 400px; */
+	 overflow: scroll;
+	 /* min-height: 100%; */
 }
 
 .email-table tbody tr{
@@ -1172,6 +1190,25 @@ li.compose-button .btn{
 .email-table tbody tr:HOVER{
 	border-left: 3px solid #3c8dbc;
 }
+
+
+.seen{
+	background-color: #f3f3f3;
+}
+.unseen{
+	background-color: #ffffff;
+}
+
+
+
+.table > tbody > tr > td.active:hover,
+.table > tbody > tr > th.active:hover,
+.table > tbody > tr.active:hover > td,
+.table > tbody > tr:hover > .active,
+.table > tbody > tr.active:hover > th {
+  background-color:transparent;
+}
+
 
 
 	/* controll bottons for inbox */
