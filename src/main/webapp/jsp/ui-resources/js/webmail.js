@@ -1,18 +1,30 @@
 /*
+ * Copyright 2016 Syed Luqman Quadri. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+/*
 =====================================================
- WebMail-BSTemplate
- 
-    Author: luqman quadri
-    License: Open source - MIT
-
-=====================================================        
-
-		WebMailBST.js    
+webmail.js    
 	java script functionalities
 		* toggle side menu
 		* Showing mini side bar
 		* managing width and height of page
 		* contact list popover
+
+=====================================================        
  */
 
 
@@ -72,12 +84,6 @@ $(function () {
     $.WebMailBST.pushMenu.activate(obj.sidebarToggleSelector);
   }
 
-
-  //Activate box widget
-  if (obj.enableBoxWidget) {
-    $.WebMailBST.boxWidget.activate();
-  }
-
   /*
    * INITIALIZE BUTTON TOGGLE
    * ------------------------
@@ -105,63 +111,24 @@ function manage_object() {
     activate: function () {
       var _this = this;
       _this.fix();
-      _this.fixSidebar();
+      // on resizing the main window the height of the page will get adjusted accordingly using following function
       $(window, ".wrapper").resize(function () {
         _this.fix();
-        _this.fixSidebar();
       });
     },
     fix: function () {
       //Get window height and the wrapper height
       var neg = $('.main-header').outerHeight() + $('.main-footer').outerHeight();
+      //alert("neg is :: "+neg);
       var window_height = $(window).height();
+     // alert("window height  is :: "+window_height);
+      $(".main-sidebar").css('min-height', window_height);
+     // alert("main sidebar height  is :: "+ $('.main-sidebar').height());
       var sidebar_height = $(".sidebar").height();
-      //Set the min-height of the content and sidebar based on the
-      //the height of the document.
-      if ($("body").hasClass("fixed")) {
-        $(".content-wrapper, .right-side").css('min-height', window_height - $('.main-footer').outerHeight());
-      } else {
-        var postSetWidth;
-        if (window_height >= sidebar_height) {
-          $(".content-wrapper, .right-side").css('min-height', window_height - neg);
-          postSetWidth = window_height - neg;
-        } else {
-          $(".content-wrapper, .right-side").css('min-height', sidebar_height);
-          postSetWidth = sidebar_height;
-        }
-
-        //Fix for the control sidebar height
-        var controlSidebar = $($.WebMailBST.options.controlSidebarOptions.selector);
-        if (typeof controlSidebar !== "undefined") {
-          if (controlSidebar.height() > postSetWidth)
-            $(".content-wrapper, .right-side").css('min-height', controlSidebar.height());
-        }
-
-      }
-    },
-    fixSidebar: function () {
-      //Make sure the body tag has the .fixed class
-      if (!$("body").hasClass("fixed")) {
-        if (typeof $.fn.slimScroll != 'undefined') {
-          $(".sidebar").slimScroll({destroy: true}).height("auto");
-        }
-        return;
-      } else if (typeof $.fn.slimScroll == 'undefined' && window.console) {
-        window.console.error("Error: the fixed layout requires the slimscroll plugin!");
-      }
-      //Enable slimscroll for fixed layout
-      if ($.WebMailBST.options.sidebarSlimScroll) {
-        if (typeof $.fn.slimScroll != 'undefined') {
-          //Destroy if it exists
-          $(".sidebar").slimScroll({destroy: true}).height("auto");
-          //Add slimscroll
-          $(".sidebar").slimscroll({
-            height: ($(window).height() - $(".main-header").height()) + "px",
-            color: "rgba(0,0,0,0.2)",
-            size: "3px"
-          });
-        }
-      }
+      //alert("sidebar height  is :: "+sidebar_height);
+      $(".wrapper").css('min-height', window_height);
+      $(".content").css('min-height', window_height - neg -50);
+      $(".email-table").css('height', window_height - neg - $('.controll-buttons').height() - $('.page-info').height() - 60);  
     }
   };
 
@@ -196,7 +163,7 @@ function manage_object() {
         }
       });
 
-      $(".content-wrapper").click(function () {
+      $("wrapper").click(function () {
         //Enable hide menu when clicking on the content-wrapper on small screens
         if ($(window).width() <= (screenSizes.sm - 1) && $("body").hasClass("sidebar-open")) {
           $("body").removeClass('sidebar-open');
@@ -204,7 +171,7 @@ function manage_object() {
       });
     }}
   };
-  
+   
   /* Popover()
    * ==========
    this function is used to provide the popover as the user hovers over the contact name in contact list
@@ -217,7 +184,8 @@ function manage_object() {
 	$(".pop").popover({ 
 		trigger: "manual",
 		html: true, 
-		content: function() { return $('#popover-content').html(); },
+		content: function() {
+			return $('#popover-content').html();},
 		animation:false})
 		
     .on("mouseenter", function () {
@@ -236,10 +204,11 @@ function manage_object() {
                 $(_this).popover("hide");
             }
         }, 60);
-/*}); }, 60);*/
   });
+/* ===============================// Contact List Ends  ===========================================*/	
+
 	
-/*  ============= 
+	/*  =============  Control Buttons 
  * following function is used to select all the listed mail when user clicks on select all button.
  *   */
 	
@@ -347,6 +316,8 @@ function manage_object() {
 	    });
 	});*/
 	
+	
+	 /*Following function is used to show hover effect when user mouseover a message row*/
 	$(function(){
 		$('tbody tr').each(function(){
 			$(this).css('cursor', 'pointer').hover(function(){
@@ -361,4 +332,18 @@ function manage_object() {
 		});	
 	});	
 	
+	
+	
+	/* ================================== Contact List Starts ===================================*/
+	 /* Contact List
+	  * 	Adding contacts in contact list using ajax(json)
+	  * 	Making the first letter as the contact pic
+	  * 	On mouseover effect of contact list 
+	  * 
+	  * 		*/
+	  
+	  
+	
+	
+			
 	

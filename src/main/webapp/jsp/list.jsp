@@ -13,25 +13,13 @@
     else folder = b.getFolderName();
     b.refresh();
     session.setAttribute("jspTreeImpl", b);
-    
-    
+    System.out.println("Folder inside list.jsp is :::::::::::::::::::"+folder);
  String s = request.getParameter("page");
  if (s == null) s = "1";
  int p = Integer.parseInt(s);    
 %>
 <html>
 <head><title>Page <%= p %> List of Mails </title>
-<script>
-<!--
-function checkDel(target){
-    if ( confirm("Are you sure, you want to DELETE ALL SELECTED messages?" ) ){
-        document.performer.submit();
-        return true;
-    }
-    return false;
-} 
-// -->
-</script>
 <link rel=stylesheet type="text/css" href="skins/normal-default.css">
 </head>
 
@@ -62,6 +50,7 @@ function checkDel(target){
     <td align="center" class="caption"> Attach </td>
     <td align="center" class="caption"> From </td>
     <td align="center" class="caption"> Subject </td>
+    <td align="center" class="caption"> Content </td>
     <td align="center" class="caption"> Received </td>
     <td align="center" class="caption"> Size </td>
 </tr>
@@ -90,5 +79,10 @@ function checkDel(target){
 </table>
 <%----------- Include the Footer --------------%>
 <jsp:include page="footer.jsp?depth=../" flush="true"/>
+
 </body>
+
+
+
+
 </html>
